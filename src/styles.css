@@ -1,0 +1,20 @@
+.hidden {
+    display: none;
+}
+
+h1, h2, h3, p {
+    text-align: center;
+}
+
+.box {
+    max-width: 800px;
+    margin: 100px auto;
+}
+
+.cron-input {
+    font-size: 28px;
+    max-width: 300px;
+    margin: 50px auto;
+    padding: 30px;
+    text-align: center;
+}

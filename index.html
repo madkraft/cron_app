@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Watchers Manual</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+
+    <div class="container box" ng-controller="MainController as ctrl">
+
+        <h1>{{ctrl.result}}</h1>
+        <p>{{ctrl.next}}</p>
+        <input class="form-control input-lg cron-input" type="text" ng-model="ctrl.cron">
+        <p>minute _ hour _ date _ month _ weekday</p>
+        <button class="btn btn-lg btn-block btn-primary" ng-click="ctrl.submit()">Submit</button>
+    </div>
+
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="src/module.js"></script>
+    <script type="text/javascript" src="src/controllers.js"></script>
+    <script type="text/javascript" src="src/directives.js"></script>
+</body>
+</html>
