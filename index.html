@@ -9,12 +9,43 @@
 <body>
 
     <div class="container box" ng-controller="MainController as ctrl">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="col-md-12 panel">
+                    <h3>Minutes</h3>
+                    <div class="cell-block">
+                        <div class="cell" data-state="normal" ng-repeat="minute in ctrl.minutes" add-to-selected>
+                            <a href="#0">{{minute}}</a>
+                        </div>
+                    </div>
+                    <div class="list-group">
+                        <button type="button" class="list-group-item" every-minute>Every minute</button>
+                        <button type="button" class="list-group-item">Every 5 minutes</button>
+                        <button type="button" class="list-group-item">Every 10 minutes</button>
+                        <button type="button" class="list-group-item">Every 20 minutes</button>
+                        <button type="button" class="list-group-item">Every 30 minutes</button>
+                        <button type="button" class="list-group-item">Odd minutes</button>
+                        <button type="button" class="list-group-item">Even minutes</button>
+                        <button type="button" class="list-group-item" clear-cells>Clear</button>
+                    </div>
+                </div>
 
-        <h3>{{ctrl.result}}</h3>
-        <p>{{ctrl.next}}</p>
-        <input class="form-control input-lg cron-input" type="text" ng-model="ctrl.cron">
-        <p>minute _ hour _ date _ month _ weekday</p>
-        <button class="btn btn-lg btn-block btn-primary" ng-click="ctrl.submit()">Submit</button>
+            </div>
+
+            <div class="col-md-4">
+                <div class="col-md-12 panel">
+                    <h3>Hours</h3>
+                    <div class="cell hours" ng-repeat="hour in ctrl.hours">{{hour}}</div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="col-md-12 panel">
+                    <h3>Days of month</h3>
+                    <div class="cell months" ng-repeat="month in ctrl.months">{{month}}</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>

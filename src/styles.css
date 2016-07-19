@@ -11,10 +11,44 @@ h1, h2, h3, p {
     margin: 100px auto;
 }
 
-.cron-input {
-    font-size: 28px;
-    max-width: 300px;
-    margin: 50px auto;
-    padding: 30px;
+.panel {
+    background-color: #eee;
+    padding-bottom: 20px;
+}
+
+.cell {
+    display: inline-block;
+    width: 40px;
+    padding: 2px 5px;
+    border: 1px solid #ddd;
     text-align: center;
+}
+
+.cell a {
+    text-decoration: none;
+    color: #666;
+}
+
+.cell[data-state=active]:hover {
+    background-color: coral;
+}
+
+.cell:hover {
+    background-color: #ccc;
+}
+
+.cell[data-state=active] {
+    background-color: pink;
+}
+
+.cell-block {
+    margin-bottom: 20px;
+}
+
+.hours {
+    /*width: 117px;*/
+}
+
+.months {
+    /*width: 78px;*/
 }
