@@ -1,54 +1,84 @@
+body {
+    font-size: 12px;
+}
+
 .hidden {
     display: none;
 }
 
-h1, h2, h3, p {
+h1, h2, h3, h4, p {
     text-align: center;
 }
 
-.box {
-    max-width: 800px;
-    margin: 100px auto;
+[class^="col-"] {
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
-.panel {
+
+button:focus, button:active {
+    outline: none !important;
+}
+
+button[data-state=active] {
+    background-color: #5bc0de;
+    color: #fff !important;
+}
+
+
+.modal-dialog {
+    width: 1000px;
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+.cron-section {
     background-color: #eee;
-    padding-bottom: 20px;
 }
 
 .cell {
     display: inline-block;
-    width: 40px;
+    width: 25%;
     padding: 2px 5px;
-    border: 1px solid #ddd;
+    border: 1px solid #eee;
+    background-color: #fff;
     text-align: center;
 }
-
-.cell a {
-    text-decoration: none;
-    color: #666;
-}
-
-.cell[data-state=active]:hover {
-    background-color: coral;
-}
-
 .cell:hover {
-    background-color: #ccc;
+    background-color: #f5f5f5;
 }
 
 .cell[data-state=active] {
-    background-color: pink;
+    background-color: #5cb85c;
+    color: #fff;
 }
 
+.cell[data-state=active]:hover {
+    background-color: #449d44;
+    color: #fff;
+}
+
+
+
 .cell-block {
+    height: 364px;
     margin-bottom: 20px;
 }
 
-.hours {
-    /*width: 117px;*/
+.cell-hour {
+    width: 50%;
 }
 
-.months {
-    /*width: 78px;*/
+.cell-day {
+    width: 50%;
+}
+
+.cell-month {
+    width: 100%;
+}
+
+.cell-dow {
+    width: 100%;
 }

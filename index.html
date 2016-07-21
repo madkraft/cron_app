@@ -8,44 +8,147 @@
 </head>
 <body>
 
-    <div class="container box" ng-controller="MainController as ctrl">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="col-md-12 panel">
-                    <h3>Minutes</h3>
-                    <div class="cell-block">
-                        <div class="cell" data-state="normal" ng-repeat="minute in ctrl.minutes" add-to-selected>
-                            <a href="#0">{{minute}}</a>
+    <div class="container" ng-controller="MainController as ctrl">
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="margin: 200px">
+            Open cron
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Define Cron Job</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="col-md-12 cron-section" id="minutes">
+                                    <h4>Minutes</h4>
+                                    <div class="cell-block">
+                                        <button class="cell" data-state="normal" ng-repeat="minutes in ctrl.minutes" toggle-selected add-to-selected>
+                                            {{minutes}}
+                                        </button>
+                                    </div>
+
+                                    <div class="button-group">
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each>Every minute</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="5">Every 5 minutes</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="10">Every 10 minutes</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="20">Every 20 minutes</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="30">Every 30 minutes</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="odd">Odd minutes</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="2">Even minutes</button>
+                                        <button type="button" class="btn btn-block" clear-cells>Clear</button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="col-md-12 cron-section" id="hours">
+                                    <h4>Hours</h4>
+                                    <div class="cell-block">
+                                        <button class="cell cell-hour" data-state="normal" ng-repeat="hours in ctrl.hours" toggle-selected add-to-selected>
+                                            {{hours}}
+                                        </button>
+                                    </div>
+                                    <div class="button-group">
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each>Every hour</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="3">Every 3 hours</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="4">Every 4 hours</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="6">Every 6 hours</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="12">Every 12 hours</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="odd">Odd hours</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="2">Even hours</button>
+                                        <button type="button" class="btn btn-block" clear-cells>Clear</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <div class="col-md-12 cron-section" id="days">
+                                    <h4>Days of month</h4>
+                                    <div class="cell-block">
+                                        <button class="cell cell-day" data-state="normal" ng-repeat="days in ctrl.days" toggle-selected add-to-selected>
+                                            {{days}}
+                                        </button>
+                                    </div>
+                                    <div class="button-group">
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each>Every day</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="3">Every 3 days</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="4">Every 4 days</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="5">Every 5 days</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="odd">Odd days</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="2">Even days</button>
+                                        <button type="button" class="btn btn-block" clear-cells>Clear</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="col-md-12 cron-section" id="months">
+                                    <h4>Months</h4>
+                                    <div class="cell-block">
+                                        <button class="cell cell-month" data-state="normal" ng-repeat="months in ctrl.months" toggle-selected add-to-selected>
+                                            {{months.name}}
+                                        </button>
+                                    </div>
+
+                                    <div class="button-group">
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each>Every month</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="3">Every 3 months</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="4">Every 4 months</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="6">Every 6 months</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="summer">Summer months</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="autumn">Autumn months</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="winter">Winter months</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="spring">Spring months</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="odd">Odd months</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="2">Even months</button>
+                                        <button type="button" class="btn btn-block" clear-cells>Clear</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="col-md-12 cron-section" id="dow">
+                                    <h4>Days of week</h4>
+                                    <div class="cell-block">
+                                        <button class="cell cell-dow" data-state="normal" ng-repeat="dow in ctrl.dow" toggle-selected add-to-selected>
+                                            {{dow.name}}
+                                        </button>
+                                    </div>
+                                    <div class="button-group">
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each>Every day</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="weekday">Week days</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="weekend">Weekend days</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="odd">Odd days</button>
+                                        <button type="button" class="btn btn-block" data-state="normal" toggle-active select-each="2">Even days</button>
+                                        <button type="button" class="btn btn-block" clear-cells>Clear</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+
                     </div>
-                    <div class="list-group">
-                        <button type="button" class="list-group-item" every-minute>Every minute</button>
-                        <button type="button" class="list-group-item">Every 5 minutes</button>
-                        <button type="button" class="list-group-item">Every 10 minutes</button>
-                        <button type="button" class="list-group-item">Every 20 minutes</button>
-                        <button type="button" class="list-group-item">Every 30 minutes</button>
-                        <button type="button" class="list-group-item">Odd minutes</button>
-                        <button type="button" class="list-group-item">Even minutes</button>
-                        <button type="button" class="list-group-item" clear-cells>Clear</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="ctrl.saveCron()">Save cron</button>
                     </div>
-                </div>
-
-            </div>
-
-            <div class="col-md-4">
-                <div class="col-md-12 panel">
-                    <h3>Hours</h3>
-                    <div class="cell hours" ng-repeat="hour in ctrl.hours">{{hour}}</div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="col-md-12 panel">
-                    <h3>Days of month</h3>
-                    <div class="cell months" ng-repeat="month in ctrl.months">{{month}}</div>
                 </div>
             </div>
         </div>
+
+
+
+
+
+
     </div>
 
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
@@ -54,5 +157,6 @@
     <script type="text/javascript" src="src/module.js"></script>
     <script type="text/javascript" src="src/controllers.js"></script>
     <script type="text/javascript" src="src/directives.js"></script>
+    <script type="text/javascript" src="src/services.js"></script>
 </body>
 </html>
