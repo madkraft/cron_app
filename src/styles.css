@@ -1,6 +1,6 @@
-body {
-    font-size: 12px;
-}
+/*body {
+    font-size: 16px;
+}*/
 
 .hidden {
     display: none;
@@ -10,13 +10,9 @@ h1, h2, h3, h4, p {
     text-align: center;
 }
 
-[class^="col-"] {
-    padding-right: 10px;
-    padding-left: 10px;
-}
 
 
-button:focus, button:active {
+input:focus, input:active, button:focus, button:active {
     outline: none !important;
 }
 
@@ -41,23 +37,36 @@ button[data-state=active] {
     width: 1000px;
 }
 
-.modal-body {
-    padding: 25px;
-}
+
 
 .cron-section {
     background-color: #eee;
+    padding: 20px;
 }
 
-.well {
-    padding-right: 0;
-    padding-left: 0;
+.cron-container[data-state=hidden] {
+    display: none;
+}
+
+.cron-container[data-state=active] {
+    display: block;
+}
+
+.recurrence-text {
+    border: none;
+    border-bottom: 1px solid #5bc0de;
+    width: 20px;
+    text-align: center;
+}
+
+.cell-block {
+    margin: 20px auto;
 }
 
 .cell {
     display: inline-block;
-    width: 25%;
-    padding: 2px 5px;
+    /*width: 25%;*/
+    padding: 5px;
     border: 1px solid #eee;
     background-color: #fff;
     text-align: center;
@@ -78,10 +87,7 @@ button[data-state=active] {
 
 
 
-.cell-block {
-    height: 364px;
-    margin-bottom: 20px;
-}
+
 
 .cell-hour {
     width: 50%;
@@ -96,5 +102,5 @@ button[data-state=active] {
 }
 
 .cell-dow {
-    width: 100%;
+    width: 96px;
 }

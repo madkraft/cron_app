@@ -5,6 +5,7 @@
     app.directive('addToSelected', addToSelected);
     app.directive('selectEach', selectEach);
     app.directive('clearCells', clearCells);
+    app.directive('switchPanel', switchPanel);
 
 
     function toggleSelected() {
@@ -73,7 +74,7 @@
 
         function link(scope, el, attrs) {
             var handleClick = function(){
-                var cronPiece = el.parent().parent()[0].getAttribute('id');
+                var cronPiece = el.closest('.cron-container')[0].getAttribute('id');
                 if (Object.keys(scope[cronPiece]).length) {
                     dispatcherService.update(cronPiece, scope[cronPiece].id, false);
                 } else {
@@ -172,10 +173,12 @@
             };
 
 
-            var handleClick = function(){
-                var cells = el.parent().prev().children(),
-                    cronPiece = el.parent().parent()[0].getAttribute('id'),
-                    range = attrs["selectEach"];
+            var handleChange = function(){
+                var cells = el.closest('.cron-section').find('.cell'),
+                    cronPiece = el.closest('.cron-container')[0].getAttribute('id'),
+                    // range = attrs["selectEach"];
+                    range = scope.ctrl.dowRecurrence;
+
 
                 if (range) {
                     addWithInterval(cronPiece, cells, range);
@@ -185,7 +188,8 @@
 
             };
 
-            el.on('click', handleClick);
+            // el.on('click', handleClick);
+            el.on('input', handleChange);
 
         }
     }
@@ -227,6 +231,41 @@
             el.on('click', handleClick);
         }
     }
+
+
+
+    function switchPanel() {
+        return {
+            restrict: 'A',
+            link: link
+        };
+
+        function link(scope, el, attrs) {
+
+            var panelId = el[0].getAttribute('switch-panel'),
+                cronContainer = el.closest('.cron-nav').siblings('#' + panelId);
+
+            var hideElements = function () {
+                var allCronContainers = el.closest('.cron-nav').siblings();
+                for (var i = 0; i < allCronContainers.length; i++) {
+                    allCronContainers[i].setAttribute('data-state', 'hidden');
+                }
+            };
+
+            var toggleState = function(elem, one, two){
+                hideElements();
+                var currentAttr = elem.getAttribute("data-state");
+                elem.setAttribute(
+                    'data-state',
+                    currentAttr === one ?  two : one
+                );
+            };
+
+            el.on('click', toggleState.bind(null, cronContainer[0], 'active', 'hidden'));
+        }
+    }
+
+
 
 
 

@@ -42,6 +42,8 @@
             {id: 6, name: 'Saturday', type: 'weekend'}
         ];
 
+        ctrl.dowRecurrence = 1;
+
         ctrl.saveCron = function () {
             console.log('result', dispatcherService.getCronPiece());
         };
