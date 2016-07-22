@@ -25,6 +25,17 @@ button[data-state=active] {
     color: #fff !important;
 }
 
+.options-btn {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+    margin: 0;
+}
+
+.options-btn:hover {
+    background-color: #666;
+    color: #fff;
+}
 
 .modal-dialog {
     width: 1000px;
@@ -36,6 +47,11 @@ button[data-state=active] {
 
 .cron-section {
     background-color: #eee;
+}
+
+.well {
+    padding-right: 0;
+    padding-left: 0;
 }
 
 .cell {

@@ -74,7 +74,6 @@
         function link(scope, el, attrs) {
             var handleClick = function(){
                 var cronPiece = el.parent().parent()[0].getAttribute('id');
-
                 if (Object.keys(scope[cronPiece]).length) {
                     dispatcherService.update(cronPiece, scope[cronPiece].id, false);
                 } else {
