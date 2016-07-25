@@ -1,0 +1,47 @@
+<div class="col-md-12 cron-section">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="radio-select" data-state="active" toggle-active switch-panel="days">
+                <span>Every</span>
+                <input type="text" class="recurrence-text" ng-model="ctrl.dailyRecurrence" select-each="{{ctrl.dailyRecurrence}}" data-cronpiece="days">
+                <span>day(s)</span>
+            </div>
+
+            <div class="radio-select"
+                data-state="normal"
+                toggle-active
+                switch-panel="dow"
+                data-cronpiece="dow"
+                select-each="weekday">
+                    Every weekday
+            </div>
+            <div class="radio-select"
+                data-state="normal"
+                toggle-active
+                switch-panel="dow"
+                data-cronpiece="dow"
+                select-each="weekend">
+                    Every weekend
+            </div>
+
+
+        </div>
+        <div class="col-md-5" id="days" data-state="active">
+            <div class="cell-block">
+                <button class="js-days cell cell-day" data-state="normal" ng-repeat="days in ctrl.days" toggle-selected add-to-selected>
+                    {{days}}
+                </button>
+            </div>
+        </div>
+
+        <div class="col-md-5" id="dow" data-state="hidden">
+            <div class="cell-block">
+                <button class="js-dow cell cell-dow" data-state="normal" ng-repeat="dow in ctrl.dow" toggle-selected add-to-selected>
+                    {{dow.name}}
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+</div>

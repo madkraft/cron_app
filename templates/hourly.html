@@ -1,0 +1,17 @@
+<div class="col-md-12 cron-section">
+    <div class="cell-block">
+        <button class="cell cell-hour" data-state="normal" ng-repeat="hours in ctrl.hours" toggle-selected add-to-selected>
+            {{hours}}
+        </button>
+    </div>
+    <div class="button-group">
+        <button type="button" class="options-btn btn-block" data-state="normal" toggle-active select-each>Every hour</button>
+        <button type="button" class="options-btn btn-block" data-state="normal" toggle-active select-each="3">Every 3 hours</button>
+        <button type="button" class="options-btn btn-block" data-state="normal" toggle-active select-each="4">Every 4 hours</button>
+        <button type="button" class="options-btn btn-block" data-state="normal" toggle-active select-each="6">Every 6 hours</button>
+        <button type="button" class="options-btn btn-block" data-state="normal" toggle-active select-each="12">Every 12 hours</button>
+        <button type="button" class="options-btn btn-block" data-state="normal" toggle-active select-each="odd">Odd hours</button>
+        <button type="button" class="options-btn btn-block" data-state="normal" toggle-active select-each="2">Even hours</button>
+        <button type="button" class="options-btn btn-block" clear-cells>Clear</button>
+    </div>
+</div>

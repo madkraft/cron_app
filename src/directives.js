@@ -112,25 +112,23 @@
                 for (var i = 0; i < cells.length; i++) {
                     add(cronPiece, cells, i, needShift(cronPiece));
                 }
-                console.log('after all:', dispatcherService.getCronPiece());
+                // console.log('after all:', dispatcherService.getCronPiece());
             };
 
             var addWithInterval = function (cronPiece, cells, range) {
-
                 dispatcherService.clear(cronPiece);
                 for (var i=0; i < cells.length; i++) {
                     cells[i].setAttribute('data-state', 'normal');
 
-                    console.log('needShift', needShift(cronPiece));
+                    // console.log('needShift', needShift(cronPiece));
                     add(cronPiece, cells, checkCronType(cronPiece, range, i), needShift(cronPiece));
 
                 }
 
-                console.log('data', dispatcherService.getCronPiece());
+                // console.log('data', dispatcherService.getCronPiece());
             }
 
             var checkCronType = function (cronPiece, range, i) {
-
                  if (isNaN(range)) {
                     return range === 'odd' ? oddNum(i) : getObjectId(cronPiece, range, i)
                  } else {
@@ -174,10 +172,9 @@
 
 
             var handleChange = function(){
-                var cells = el.closest('.cron-section').find('.cell'),
-                    cronPiece = el.closest('.cron-container')[0].getAttribute('id'),
-                    // range = attrs["selectEach"];
-                    range = scope.ctrl.dowRecurrence;
+                var cronPiece = attrs.cronpiece,
+                    cells = el.closest('.cron-section').find('.js-' + cronPiece),
+                    range = attrs["selectEach"];
 
 
                 if (range) {
@@ -188,7 +185,7 @@
 
             };
 
-            // el.on('click', handleClick);
+            el.on('click', handleChange);
             el.on('input', handleChange);
 
         }
@@ -243,10 +240,11 @@
         function link(scope, el, attrs) {
 
             var panelId = el[0].getAttribute('switch-panel'),
-                cronContainer = el.closest('.cron-nav').siblings('#' + panelId);
+                element = angular.element('#' + panelId);
+
 
             var hideElements = function () {
-                var allCronContainers = el.closest('.cron-nav').siblings();
+                var allCronContainers = element.parent().children('[data-state]');
                 for (var i = 0; i < allCronContainers.length; i++) {
                     allCronContainers[i].setAttribute('data-state', 'hidden');
                 }
@@ -261,7 +259,7 @@
                 );
             };
 
-            el.on('click', toggleState.bind(null, cronContainer[0], 'active', 'hidden'));
+            el.on('click', toggleState.bind(null, element[0], 'active', 'hidden'));
         }
     }
 

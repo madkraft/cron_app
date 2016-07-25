@@ -42,17 +42,19 @@ button[data-state=active] {
 .cron-section {
     background-color: #eee;
     padding: 20px;
+    min-height: 140px;
 }
 
-.cron-container[data-state=hidden] {
+[data-state=hidden] {
     display: none;
 }
 
-.cron-container[data-state=active] {
+[data-state=active] {
     display: block;
 }
 
 .recurrence-text {
+    background: transparent;
     border: none;
     border-bottom: 1px solid #5bc0de;
     width: 20px;
@@ -60,8 +62,10 @@ button[data-state=active] {
 }
 
 .cell-block {
-    margin: 20px auto;
+    /*margin: 20px auto;*/
+    width: 260px;
 }
+
 
 .cell {
     display: inline-block;
@@ -85,16 +89,12 @@ button[data-state=active] {
     color: #fff;
 }
 
-
-
-
-
 .cell-hour {
     width: 50%;
 }
 
 .cell-day {
-    width: 50%;
+    width: 20%;
 }
 
 .cell-month {
@@ -102,5 +102,40 @@ button[data-state=active] {
 }
 
 .cell-dow {
-    width: 96px;
+    width: 50%;
+}
+
+.radio-select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.radio-select[data-state=active] {
+    background-color: #5bc0de;
+    color: #fff;
+}
+
+.radio-select[data-state=active] input {
+    border-bottom: 1px solid #fff;
+    color: #fff;
+}
+
+.radio-select[data-state=normal]:hover {
+    background-color: #666;
+    color: #fff;
+}
+
+.radio-select[data-state=normal] input {
+    color: #111;
+}
+
+.radio-select[data-state=normal]:hover input {
+    border-bottom: 1px solid #fff;
+    color: #fff;
+}
+
+.radio-select-dropdown {
+    display: inline-block;
+    border-bottom: 1px solid #fff;
 }
