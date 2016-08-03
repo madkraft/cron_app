@@ -47,6 +47,9 @@
         ctrl.monthlyRecurrence = 1;
         ctrl.advanced = '* * * * *';
 
+        ctrl.checked = true;
+
+
         ctrl.saveCron = function () {
             console.log('result', dispatcherService.getCronPiece());
         };

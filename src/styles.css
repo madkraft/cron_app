@@ -2,6 +2,7 @@
     font-size: 16px;
 }*/
 
+
 .hidden {
     display: none;
 }
@@ -27,14 +28,24 @@ input:focus, input:active, button:focus, button:active {
 }
 
 .nav-btn:hover {
-    background-color: #666;
-    color: #fff;
+    background-color: #ccc;
 }
 
 .nav-btn[data-state=active] {
-    /*background-color: #5bc0de;*/
+    background-color: #ddd;
     /*color: #fff !important;*/
-    border: 1px solid #5bc0de;
+    position: relative;
+    /*border-bottom: 1px solid #5bc0de;*/
+}
+
+.nav-btn[data-state=active]::after {
+    content: " ";
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid #eee;
+    position: absolute;
+    right: -35px;
+    top: 7px;
 }
 
 .nav-btn .label-text {
