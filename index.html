@@ -29,22 +29,31 @@
                                 <div ng-include="'templates/navigation.html'"></div>
                             </div>
 
-                            <div class="col-md-9 cron-container" data-state="hidden" id="hoursSection">
+                            <div class="col-md-5 cron-container" data-state="hidden" id="hoursSection">
                                 <div ng-include="'templates/hourly.html'"></div>
                             </div>
 
 
-                            <div class="col-md-9 cron-container" data-state="hidden" id="daysSection">
+                            <div class="col-md-5 cron-container" data-state="hidden" id="daysSection">
                                  <div ng-include="'templates/daily.html'"></div>
                             </div>
 
-                            <div class="col-md-9 cron-container" data-state="hidden" id="monthsSection">
+                            <div class="col-md-5 cron-container" data-state="active" id="dowSection">
+                                <div ng-include="'templates/weekly.html'"></div>
+                            </div>
+
+                            <div class="col-md-5 cron-container" data-state="hidden" id="monthsSection">
                                 <div ng-include="'templates/monthly.html'"></div>
                             </div>
 
-                            <div class="col-md-9 cron-container" data-state="active" id="dowSection">
-                                <div ng-include="'templates/weekly.html'"></div>
+
+                            <div class="col-md-5 cron-container" data-state="hidden" id="advancedSection">
+                                <div ng-include="'templates/advanced.html'"></div>
                             </div>
+
+                            <!-- <div class="col-md-4 cron-nav">
+                                <div ng-include="'templates/calendar.html'"></div>
+                            </div> -->
                         </div>
 
                     </div>

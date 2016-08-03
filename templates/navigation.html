@@ -1,26 +1,48 @@
 <div class="col-md-12 cron-section">
-    <button
+<!--     <button
         type="button"
         class="options-btn btn-block"
         data-state="normal"
         toggle-active
         switch-panel="daysSection">
         Daily
-    </button>
-    <button
+    </button> -->
+<!--     <button
         type="button"
         class="options-btn btn-block"
         data-state="active"
         toggle-active
         switch-panel="dowSection">
         Weekly
-    </button>
-    <button
+    </button> -->
+<!--     <button
         type="button"
         class="options-btn btn-block"
         data-state="normal"
         toggle-active
         switch-panel="monthsSection">
         Monthly
-    </button>
+    </button> -->
+<!--     <button
+        type="button"
+        class="options-btn btn-block"
+        data-state="normal"
+        toggle-active
+        switch-panel="advancedSection">
+        Advanced
+    </button> -->
+
+
+    <label class="nav-btn" data-state="normal" toggle-active switch-panel="daysSection">
+        <input type="radio" ng-model="color.name" value="color.name" /><span class="label-text">Daily</span>
+    </label>
+    <label class="nav-btn" data-state="active" toggle-active switch-panel="dowSection">
+        <input type="radio" ng-model="color.name" value="color.name" /><span class="label-text">Weekly</span>
+    </label>
+    <label class="nav-btn" data-state="normal" toggle-active switch-panel="monthsSection">
+        <input type="radio" ng-model="color.name" value="color.name"/><span class="label-text">Monthly</span>
+    </label>
+    <label class="nav-btn" data-state="normal" toggle-active switch-panel="advancedSection">
+        <input type="radio" ng-model="color.name" value="color.name"/><span class="label-text">Advanced</span>
+    </label>
 </div>

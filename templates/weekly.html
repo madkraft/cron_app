@@ -1,22 +1,10 @@
 <div class="col-md-12 cron-section">
-    <div class="row">
-        <div class="col-md-7">
-            <div class="radio-select" data-state="active" toggle-active>
-                <span>Every</span>
-                <input type="text"
-                    class="recurrence-text"
-                    ng-model="ctrl.weeklyRecurrence"
-                    select-each="{{ctrl.dailyRecurrence * 7}}">
-                <span>week(s) on:</span>
-            </div>
-        </div>
-
-        <div class="col-md-5">
-            <div class="cell-block">
-                <button class="cell cell-dow" data-state="normal" ng-repeat="dow in ctrl.dow" toggle-selected add-to-selected>
-                    {{dow.name}}
-                </button>
-            </div>
-        </div>
+    <div class="radio-select" data-state="active" toggle-active>
+        <span>Every</span>
+        <input type="text"
+            class="recurrence-text"
+            ng-model="ctrl.weeklyRecurrence"
+            select-each="{{ctrl.dailyRecurrence * 7}}">
+        <span>week(s) on:</span>
     </div>
 </div>
