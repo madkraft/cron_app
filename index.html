@@ -29,6 +29,30 @@
                                 <div ng-include="'templates/navigation.html'"></div>
                             </div>
 
+                            <div class="col-md-5 cron-container" data-state="hidden" id="hoursSection">
+                                <div ng-include="'templates/hourly.html'"></div>
+                            </div>
+
+
+                            <div class="col-md-5 cron-container" data-state="hidden" id="daysSection">
+                                 <div ng-include="'templates/daily.html'"></div>
+                            </div>
+
+                            <div class="col-md-5 cron-container" data-state="active" id="dowSection">
+                                <div ng-include="'templates/weekly.html'"></div>
+                            </div>
+
+                            <div class="col-md-5 cron-container" data-state="hidden" id="monthsSection">
+                                <div ng-include="'templates/monthly.html'"></div>
+                            </div>
+
+
+                            <div class="col-md-5 cron-container" data-state="hidden" id="advancedSection">
+                                <div ng-include="'templates/advanced.html'"></div>
+                            </div>
+
+
+
                         </div>
 
                     </div>
@@ -36,18 +60,17 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="ctrl.saveCron()">Save cron</button>
                     </div>
+                    <pre style="font-size: 14px">
+                        {{ctrl.state | json}}
+                    </pre>
                 </div>
             </div>
         </div>
 
-
-
-
-
-
     </div>
 
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="node_modules/lodash/lodash.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script type="text/javascript" src="node_modules/angular/angular.js"></script>
     <script type="text/javascript" src="src/module.js"></script>

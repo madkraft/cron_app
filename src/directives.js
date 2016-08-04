@@ -2,6 +2,7 @@
 
     app.directive('toggleSelected', toggleSelected);
     app.directive('toggleActive', toggleActive);
+    app.directive('setState', setState);
     app.directive('addToSelected', addToSelected);
     app.directive('selectEach', selectEach);
     app.directive('clearCells', clearCells);
@@ -36,6 +37,32 @@
 
         }
     }
+
+
+    function setState() {
+        return {
+            restrict: 'A',
+            link: link
+        };
+
+        function link(scope, el, attrs) {
+            // scope.$apply(function () {
+            //     scope.ctrl.state.label =  attrs.setState;
+            // });
+
+            // scope.ctrl.state.label =  attrs.setState;
+
+            console.log('', scope.ctrl.state);
+            console.log('', attrs.setState);
+
+            el.on('click', function () {
+                scope.$apply(function () {
+                    scope.ctrl.state.label =  attrs.setState;
+                });
+            });
+        }
+    }
+
 
     function toggleActive() {
         return {
@@ -97,25 +124,23 @@
 
         function link(scope, el, attrs) {
 
+            el.on('click', handleChange);
+            el.on('input', handleChange);
 
-            var add = function (cronPiece, cells, i, shift) {
-                if (typeof i !== 'undefined') {
-                    dispatcherService.update(cronPiece, i, shift);
-                    cells[i].setAttribute('data-state', 'active');
+
+            function handleChange() {
+                var cronPiece = attrs.cronpiece,
+                    cells = el.closest('.cron-section').find('.js-' + cronPiece),
+                    range = attrs["selectEach"];
+
+                if (range) {
+                    addWithInterval(cronPiece, cells, range);
                 } else {
-                    return;
+                    addAll(cronPiece, cells);
                 }
             };
 
-            var addAll = function (cronPiece, cells) {
-                dispatcherService.clear(cronPiece);
-                for (var i = 0; i < cells.length; i++) {
-                    add(cronPiece, cells, i, needShift(cronPiece));
-                }
-                // console.log('after all:', dispatcherService.getCronPiece());
-            };
-
-            var addWithInterval = function (cronPiece, cells, range) {
+            function addWithInterval(cronPiece, cells, range) {
                 dispatcherService.clear(cronPiece);
                 for (var i=0; i < cells.length; i++) {
                     cells[i].setAttribute('data-state', 'normal');
@@ -127,8 +152,24 @@
 
                 // console.log('data', dispatcherService.getCronPiece());
             }
+            function addAll(cronPiece, cells) {
+                dispatcherService.clear(cronPiece);
+                for (var i = 0; i < cells.length; i++) {
+                    add(cronPiece, cells, i, needShift(cronPiece));
+                }
+                // console.log('after all:', dispatcherService.getCronPiece());
+            };
 
-            var checkCronType = function (cronPiece, range, i) {
+            function add(cronPiece, cells, i, shift) {
+                if (typeof i !== 'undefined') {
+                    dispatcherService.update(cronPiece, i, shift);
+                    cells[i].setAttribute('data-state', 'active');
+                } else {
+                    return;
+                }
+            };
+
+            function checkCronType(cronPiece, range, i) {
                  if (isNaN(range)) {
                     return range === 'odd' ? oddNum(i) : getObjectId(cronPiece, range, i)
                  } else {
@@ -137,7 +178,7 @@
 
             };
 
-            var getObjectId = function (cronPiece, range, i) {
+            function getObjectId(cronPiece, range, i) {
                 if (range === scope.ctrl[cronPiece][i].type) {
                     return scope.ctrl.months[i].id;
                 } else {
@@ -146,7 +187,7 @@
             }
 
 
-            var oddNum = function (i) {
+            function oddNum(i) {
                 if (Math.abs(i % 2) == 1) {
                     return i;
                 } else {
@@ -155,39 +196,19 @@
             };
 
 
-            var evenNum = function (range, i) {
+            function evenNum(range, i) {
                 if (i % range === 0) {
                     return i;
                 }
             };
 
-
-            var needShift = function (cronPiece) {
+            function needShift(cronPiece) {
                 if (cronPiece === 'months') {
                     return true;
                 } else {
                     return scope.ctrl[cronPiece][0] === 1
                 }
             };
-
-
-            var handleChange = function(){
-                var cronPiece = attrs.cronpiece,
-                    cells = el.closest('.cron-section').find('.js-' + cronPiece),
-                    range = attrs["selectEach"];
-
-
-                if (range) {
-                    addWithInterval(cronPiece, cells, range);
-                } else {
-                    addAll(cronPiece, cells);
-                }
-
-            };
-
-            el.on('click', handleChange);
-            el.on('input', handleChange);
-
         }
     }
 

@@ -1,30 +1,41 @@
 <div class="col-md-12 cron-section">
     <label
-        class="nav-btn"
+        class="radio-btn"
         data-state="normal"
         toggle-active
-        switch-panel="days">
+        switch-panel="hoursSection">
+            <input type="radio" name="nav"/><span class="label-text">Hourly</span>
+    </label>
+    <label
+        class="radio-btn"
+        data-state="normal"
+        ng-click="ctrl.setState(ctrl.date)"
+        toggle-active
+        switch-panel="daysSection">
             <input type="radio" name="nav"/><span class="label-text">Daily</span>
     </label>
     <label
-        class="nav-btn"
+        class="radio-btn"
         data-state="active"
+        ng-click="ctrl.setState(ctrl.weeks)"
         toggle-active
-        switch-panel="">
+        switch-panel="dowSection">
             <input type="radio" name="nav" ng-model="::ctrl.checked" ng-value="true"/><span class="label-text">Weekly</span>
     </label>
     <label
-        class="nav-btn"
+        class="radio-btn"
         data-state="normal"
+        ng-click="ctrl.setState(ctrl.months)"
         toggle-active
-        switch-panel="">
+        switch-panel="monthsSection">
             <input type="radio" name="nav"/><span class="label-text">Monthly</span>
     </label>
     <label
-        class="nav-btn"
+        class="radio-btn"
         data-state="normal"
+        ng-click="ctrl.setState(ctrl.advanced)"
         toggle-active
-        switch-panel="">
+        switch-panel="advancedSection">
             <input type="radio" name="nav"/><span class="label-text">Advanced</span>
     </label>
 </div>

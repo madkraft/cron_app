@@ -1,26 +1,30 @@
 <div class="col-md-12 cron-section">
-    <div class="radio-select" data-state="active" toggle-active switch-panel="days">
-        <span>Every</span>
-        <input type="text" class="recurrence-text" ng-model="ctrl.dailyRecurrence" select-each="{{ctrl.dailyRecurrence}}" data-cronpiece="days">
-        <span>day(s)</span>
-    </div>
+    <label
+        class="radio-btn options"
+        data-state="normal"
+        ng-click="ctrl.setState(ctrl.date)"
+        toggle-active>
+            <input type="radio" name="day"/>
+            <span>Every</span>
+            <input type="text" class="recurrence-text" ng-model="ctrl.date.value">
+            <span>day(s)</span>
+    </label>
 
-    <div class="radio-select"
+    <label
+        class="radio-btn options"
         data-state="normal"
-        toggle-active
-        switch-panel="dow"
-        data-cronpiece="dow"
-        select-each="weekday">
-            Every weekday
-    </div>
-    <div class="radio-select"
+        ng-click="ctrl.setState(ctrl.dow)"
+        toggle-active>
+            <input type="radio" name="day" ng-model="ctrl.dow.value" ng-value="'1-5'"/><span class="label-text">Every weekday</span>
+    </label>
+
+    <label
+        class="radio-btn options"
         data-state="normal"
-        toggle-active
-        switch-panel="dow"
-        data-cronpiece="dow"
-        select-each="weekend">
-            Every weekend
-    </div>
+        ng-click="ctrl.setState(ctrl.dow)"
+        toggle-active>
+            <input type="radio" name="day" ng-model="ctrl.dow.value" ng-value="'0,6'"/><span class="label-text">Every weekend</span>
+    </label>
 
 
 <!--         <div class="col-md-5" id="days" data-state="active">

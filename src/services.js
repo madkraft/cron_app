@@ -1,6 +1,7 @@
 (function (app) {
 
     app.service('dispatcherService', dispatcherService);
+    app.service('stateContainer', stateContainer);
 
 
     function dispatcherService() {
@@ -55,7 +56,47 @@
             clear: clear
         };
 
-    };
+    }
+
+
+    function stateContainer() {
+
+        var cron = {
+            minutes: '0',
+            hours: '0',
+            days: '*',
+            months: '*',
+            dow: '*'
+        };
+
+        return {
+            set: set,
+            get: get
+        };
+
+        function set(values) {
+            // debugger
+            cron.days = _calculateDays(values.date, values.weeks, values.dow);
+            cron.dow = values.dow;
+        }
+
+        function get() {
+            return cron;
+        }
+
+        function _calculateDays(date, weeks, dow) {
+            if (weeks > 1) {
+                return '*/' + (7 * parseFloat(weeks));
+            } else if (date > 1) {
+                return '*/' + date;
+            } else {
+                return '*';
+            }
+
+
+        }
+
+    }
 
 
 }(angular.module('app')));
