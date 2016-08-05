@@ -1,52 +1,57 @@
 <div class="col-md-12 cron-section">
-    <div class="radio-select" data-state="active" toggle-active>
-        <span>Day</span>
-        <input type="text"
-            class="recurrence-text"
-            ng-model="ctrl.dailyRecurrence"
-            select-each="{{ctrl.dailyRecurrence}}"
-            data-cronpiece="days">
-        <span>of every</span>
-        <input type="text"
-            class="recurrence-text"
-            ng-model="ctrl.monthlyRecurrence"
-            select-each="{{ctrl.monthlyRecurrence}}"
-            data-cronpiece="months">
-        <span>month(s)</span>
-    </div>
-    <div class="radio-select" data-state="normal" toggle-active>
-        <span>The </span>
-        <div class="radio-select-dropdown">
-            <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                fourth
-                <span class="caret"></span>
-            </div>
-            <ul class="dropdown-menu">
-                <li><a href="#">first</a></li>
-                <li><a href="#">second</a></li>
-                <li><a href="#">third</a></li>
-                <li><a href="#">fourth</a></li>
-            </ul>
-        </div>
-        <span>day of every</span>
-        <input type="text"
-            class="recurrence-text"
-            ng-model="ctrl.monthlyRecurrence"
-            select-each="{{ctrl.monthlyRecurrence}}"
-            data-cronpiece="months">
-        <span>month(s)</span>
-    </div>
 
-        <!-- <div class="col-md-5">
-            <div class="cell-block">
-                <button class="js-days cell cell-day" data-state="normal" ng-repeat="days in ctrl.days" toggle-selected add-to-selected>
-                    {{days}}
-                </button>
+    <label
+        class="radio-btn options"
+        data-state="normal"
+        ng-click="ctrl.setState(ctrl.date, ctrl.months)"
+        toggle-active>
+            <input type="radio" name="months"/>
+            <span class="label-text">Day</span>
+            <input type="text" class="recurrence-text" ng-model="ctrl.date.value">
+            <span>of every</span>
+            <input type="text" class="recurrence-text" ng-model="ctrl.months.value">
+            <span>month(s)</span>
+    </label>
+
+
+    <!-- 0 0 1-7 * 6 -->
+    <label
+        class="radio-btn options"
+        data-state="normal"
+        ng-click="ctrl.setState(ctrl.date, ctrl.months, ctrl.dow)"
+        toggle-active>
+            <input type="radio" name="months"/>
+            <span class="label-text">The</span>
+            <div class="radio-select-dropdown">
+                <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    fourth
+                    <span class="caret"></span>
+                </div>
+                <ul class="dropdown-menu">
+                    <li><a href="#">first</a></li>
+                    <li><a href="#">second</a></li>
+                    <li><a href="#">third</a></li>
+                    <li><a href="#">fourth</a></li>
+                </ul>
             </div>
-            <div class="cell-block">
-                <button class="js-months cell cell-month" data-state="normal" ng-repeat="months in ctrl.months" toggle-selected add-to-selected>
-                    {{months.name}}
-                </button>
+            <div class="radio-select-dropdown">
+                <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Saturday
+                    <span class="caret"></span>
+                </div>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Sunday</a></li>
+                    <li><a href="#">Monday</a></li>
+                    <li><a href="#">Tuesday</a></li>
+                    <li><a href="#">Wednesday</a></li>
+                    <li><a href="#">Thursday</a></li>
+                    <li><a href="#">Friday</a></li>
+                    <li><a href="#">Saturday</a></li>
+                </ul>
             </div>
-        </div> -->
+
+            <span>of every</span>
+            <input type="text" class="recurrence-text" ng-model="ctrl.months.value">
+            <span>month(s)</span>
+    </label>
 </div>

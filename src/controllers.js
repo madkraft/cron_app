@@ -61,7 +61,7 @@
         };
 
         ctrl.months = {
-            value: '',
+            value: '1',
             label: 'months'
         };
 
@@ -69,23 +69,30 @@
             value: '* * * * *'
         };
 
-        ctrl.state = {
-            value: ctrl.weeks.value,
-            label: ctrl.weeks.label
-        };
+        ctrl.state = [
+            {
+                value: ctrl.weeks.value,
+                label: ctrl.weeks.label
+            }
+        ];
 
 
 
 
-        ctrl.setState = function (state) {
-            ctrl.state = state;
-            // _.assign(ctrl.state, ctrl[stateLabel]);
+        ctrl.setState = function () {
+            ctrl.state = [];
+
+            var args = Array.prototype.slice.call(arguments);
+
+            _.each(args, function (argument) {
+                ctrl.state.push(argument)
+            });
+
         };
 
         ctrl.saveCron = function () {
             cronService.setCron(ctrl.state);
             console.log('result', cronService.getCron());
-            // console.log('result', dispatcherService.getCronPiece());
         };
 
 

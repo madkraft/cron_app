@@ -20,7 +20,7 @@
         ng-click="ctrl.setState(ctrl.weeks)"
         toggle-active>
             <input type="radio" name="weeks"/>
-            <span>Every</span>
+            <span class="label-text">Every</span>
             <input type="text" class="recurrence-text" ng-model="ctrl.weeks.value">
             <span>week(s)</span>
     </label>
@@ -30,7 +30,8 @@
         data-state="normal"
         ng-click="ctrl.setState(ctrl.dow)"
         toggle-active>
-            <input type="radio" name="weeks"/> Every week on:
+            <input type="radio" name="weeks"/>
+            <span class="label-text">Every week on:</span>
     </label>
 
 </div>
