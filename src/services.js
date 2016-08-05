@@ -1,7 +1,7 @@
 (function (app) {
 
     app.service('dispatcherService', dispatcherService);
-    app.service('stateContainer', stateContainer);
+    app.service('cronService', cronService);
 
 
     function dispatcherService() {
@@ -59,42 +59,50 @@
     }
 
 
-    function stateContainer() {
-
-        var cron = {
-            minutes: '0',
-            hours: '0',
-            days: '*',
-            months: '*',
-            dow: '*'
-        };
+    function cronService() {
+        var cron;
 
         return {
-            set: set,
-            get: get
+            setCron: setCron,
+            getCron: getCron
         };
 
-        function set(values) {
-            // debugger
-            cron.days = _calculateDays(values.date, values.weeks, values.dow);
-            cron.dow = values.dow;
+        function setCron(state) {
+
+            cron = {
+                minutes: '0',
+                hours: '0',
+                days: '*',
+                months: '*',
+                dow: '*'
+            };
+
+            if (state.label === 'weeks') {
+                cron.days = _calculateWeeks(parseFloat(state.value));
+            } else if (state.label === 'date') {
+                cron.days = _calculateDate(parseFloat(state.value));
+            } else if (state.label === 'dow') {
+                cron.dow = state.value;
+            }
+
         }
 
-        function get() {
+        function getCron() {
             return cron;
         }
 
-        function _calculateDays(date, weeks, dow) {
-            if (weeks > 1) {
-                return '*/' + (7 * parseFloat(weeks));
-            } else if (date > 1) {
-                return '*/' + date;
+        function _calculateDate(date) {
+            if (date === 1) {
+                return '*'
             } else {
-                return '*';
+                return '*/' + date;
             }
-
-
         }
+
+        function _calculateWeeks(weeks) {
+            return '*/' + (7 * weeks);
+        }
+
 
     }
 

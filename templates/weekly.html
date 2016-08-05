@@ -8,10 +8,29 @@
         <span>week(s) on:</span>
     </div> -->
 
-
-    <div class="radio-select" data-state="active" toggle-active>
+<!--     <div class="radio-select" data-state="active" toggle-active>
         <span>Every</span>
-        <input type="text" class="recurrence-text" ng-model="ctrl.weeks.value">
-        <span>week(s) on:</span>
-    </div>
+        <input type="text" class="recurrence-text" ng-model="ctrl.weeks.value" ng-click="ctrl.setState(ctrl.weeks)">
+        <span>week(s)</span>
+    </div> -->
+
+    <label
+        class="radio-btn options"
+        data-state="normal"
+        ng-click="ctrl.setState(ctrl.weeks)"
+        toggle-active>
+            <input type="radio" name="weeks"/>
+            <span>Every</span>
+            <input type="text" class="recurrence-text" ng-model="ctrl.weeks.value">
+            <span>week(s)</span>
+    </label>
+
+    <label
+        class="radio-btn options"
+        data-state="normal"
+        ng-click="ctrl.setState(ctrl.dow)"
+        toggle-active>
+            <input type="radio" name="weeks"/> Every week on:
+    </label>
+
 </div>

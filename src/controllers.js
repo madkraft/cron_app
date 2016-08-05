@@ -3,8 +3,8 @@
     app.controller('MainController', MainController);
 
 
-    MainController.$inject = ['dispatcherService', 'stateContainer'];
-    function MainController(dispatcherService, StateContainer) {
+    MainController.$inject = ['dispatcherService', 'cronService'];
+    function MainController(dispatcherService, cronService) {
         var ctrl = this;
 
         // var generateNumbers = function (n, start) {
@@ -83,8 +83,8 @@
         };
 
         ctrl.saveCron = function () {
-            StateContainer.set(ctrl.state);
-            console.log('result', StateContainer.get());
+            cronService.setCron(ctrl.state);
+            console.log('result', cronService.getCron());
             // console.log('result', dispatcherService.getCronPiece());
         };
 

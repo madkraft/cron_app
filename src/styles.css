@@ -57,7 +57,10 @@ input:focus, input:active, button:focus, button:active {
     width: 1000px;
 }
 
-
+.check-btn {
+    display: block;
+    font-weight: normal;
+}
 
 .cron-section {
     background-color: #eee;
@@ -76,7 +79,7 @@ input:focus, input:active, button:focus, button:active {
 .recurrence-text {
     background: transparent;
     border: none;
-    border-bottom: 1px solid #5bc0de;
+    border-bottom: 1px solid #666;
     width: 20px;
     text-align: center;
 }
