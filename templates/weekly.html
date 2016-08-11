@@ -21,7 +21,12 @@
         toggle-active>
             <input type="radio" name="weeks"/>
             <span class="label-text">Every</span>
-            <input type="text" class="recurrence-text" ng-model="ctrl.weeks.value">
+            <input
+                type="text"
+                class="recurrence-text"
+                check-radio-btn
+                ng-model="ctrl.weeks.value"
+                ng-click="ctrl.onClickSelect($event)">
             <span>week(s)</span>
     </label>
 

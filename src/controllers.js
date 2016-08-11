@@ -42,11 +42,54 @@
         //     {id: 6, name: 'Sat', type: 'weekend'}
         // ];
 
+        ctrl.ordinalNumbers = [
+            {label: 'first', value: '1-7'},
+            {label: 'second', value: '8-14'},
+            {label: 'third', value: '15-21'},
+            {label: 'fourth', value: '22-28'}
+        ];
+
+        ctrl.daysOfWeek = [
+            {value: 0, label: 'Sunday', type: 'weekend'},
+            {value: 1, label: 'Monday', type: 'weekday'},
+            {value: 2, label: 'Tuesday', type: 'weekday'},
+            {value: 3, label: 'Wednesday', type: 'weekday'},
+            {value: 4, label: 'Thursday', type: 'weekday'},
+            {value: 5, label: 'Friday', type: 'weekday'},
+            {value: 6, label: 'Saturday', type: 'weekend'}
+        ];
+
+        ctrl.selectedOrdinal = ctrl.ordinalNumbers[0];
+        ctrl.selectedDOW = ctrl.daysOfWeek[1];
+
+        ctrl.selectOrdItem = function(item) {
+            ctrl.selectedOrdinal = item;
+            ctrl.date.value = item.value
+        };
+
+        ctrl.selectDOW = function (item) {
+            ctrl.selectedDOW = item;
+            ctrl.dow.value = item.value;
+        };
+
 
         ctrl.checked = true;
 
+        ctrl.onClickSelect = function(event) {
+            event.target.select()
+        };
+
+
+        ctrl.hours = {
+            start: '00',
+            end: '23',
+            recurrent: '02',
+            label: 'hours'
+        };
+
+
         ctrl.date = {
-            value: 1,
+            value: '01',
             label: 'date'
         };
 
@@ -56,7 +99,7 @@
         };
 
         ctrl.dow = {
-            value: '',
+            value: '1-7',
             label: 'dow'
         };
 
@@ -80,15 +123,16 @@
 
 
         ctrl.setState = function () {
-            ctrl.state = [];
-
             var args = Array.prototype.slice.call(arguments);
 
+            ctrl.state = [];
+
             _.each(args, function (argument) {
-                ctrl.state.push(argument)
+                ctrl.state.push(argument);
             });
 
         };
+
 
         ctrl.saveCron = function () {
             cronService.setCron(ctrl.state);

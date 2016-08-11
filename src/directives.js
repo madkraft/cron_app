@@ -7,6 +7,7 @@
     app.directive('selectEach', selectEach);
     app.directive('clearCells', clearCells);
     app.directive('switchPanel', switchPanel);
+    app.directive('checkRadioBtn', checkRadioBtn);
 
 
     function toggleSelected() {
@@ -281,6 +282,19 @@
             };
 
             el.on('click', toggleState.bind(null, element[0], 'active', 'hidden'));
+        }
+    }
+
+    function checkRadioBtn() {
+        return {
+            restrict: 'A',
+            link: link
+        };
+
+        function link(scope, el, attrs) {
+            el.on('click', function () {
+                console.log('', el.parent().children('input').prop('checked', true));
+            })
         }
     }
 

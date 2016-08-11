@@ -5,11 +5,23 @@
         data-state="normal"
         ng-click="ctrl.setState(ctrl.date, ctrl.months)"
         toggle-active>
-            <input type="radio" name="months"/>
+            <input type="radio" name="month"/>
             <span class="label-text">Day</span>
-            <input type="text" class="recurrence-text" ng-model="ctrl.date.value">
+            <input
+                type="text"
+                maxlength="2"
+                class="recurrence-text double-digit"
+                check-radio-btn
+                ng-model="ctrl.date.value"
+                ng-click="ctrl.onClickSelect($event)">
             <span>of every</span>
-            <input type="text" class="recurrence-text" ng-model="ctrl.months.value">
+            <input
+                type="text"
+                maxlength="2"
+                class="recurrence-text double-digit"
+                check-radio-btn
+                ng-model="ctrl.months.value"
+                ng-click="ctrl.onClickSelect($event)">
             <span>month(s)</span>
     </label>
 
@@ -20,38 +32,39 @@
         data-state="normal"
         ng-click="ctrl.setState(ctrl.date, ctrl.months, ctrl.dow)"
         toggle-active>
-            <input type="radio" name="months"/>
+            <input type="radio" name="month"/>
             <span class="label-text">The</span>
-            <div class="radio-select-dropdown">
+            <div class="radio-select-dropdown" check-radio-btn>
                 <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    fourth
+                    {{ ctrl.selectedOrdinal.label }}
                     <span class="caret"></span>
                 </div>
                 <ul class="dropdown-menu">
-                    <li><a href="#">first</a></li>
-                    <li><a href="#">second</a></li>
-                    <li><a href="#">third</a></li>
-                    <li><a href="#">fourth</a></li>
+                    <li ng-repeat="ordinal in ctrl.ordinalNumbers">
+                        <a href="#" ng-click="ctrl.selectOrdItem(ordinal)">{{ ::ordinal.label }}</a>
+                    </li>
                 </ul>
             </div>
-            <div class="radio-select-dropdown">
+            <div class="radio-select-dropdown" check-radio-btn>
                 <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Saturday
+                    {{ ctrl.selectedDOW.label }}
                     <span class="caret"></span>
                 </div>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Sunday</a></li>
-                    <li><a href="#">Monday</a></li>
-                    <li><a href="#">Tuesday</a></li>
-                    <li><a href="#">Wednesday</a></li>
-                    <li><a href="#">Thursday</a></li>
-                    <li><a href="#">Friday</a></li>
-                    <li><a href="#">Saturday</a></li>
+                    <li ng-repeat="day in ctrl.daysOfWeek">
+                        <a href="#" ng-click="ctrl.selectDOW(day)">{{ ::day.label }}</a>
+                    </li>
                 </ul>
             </div>
 
             <span>of every</span>
-            <input type="text" class="recurrence-text" ng-model="ctrl.months.value">
+            <input
+                type="text"
+                maxlength="2"
+                class="recurrence-text double-digit"
+                check-radio-btn
+                ng-model="ctrl.months.value"
+                ng-click="ctrl.onClickSelect($event)">
             <span>month(s)</span>
     </label>
 </div>

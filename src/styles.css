@@ -11,6 +11,13 @@ h1, h2, h3, h4, p {
     text-align: center;
 }
 
+p {
+    text-align: left;
+}
+
+hr {
+    margin-bottom: 0;
+}
 
 
 input:focus, input:active, button:focus, button:active {
@@ -81,7 +88,7 @@ input:focus, input:active, button:focus, button:active {
     background: transparent;
     border: none;
     border-bottom: 1px solid #666;
-    width: 20px;
+    width: 40px;
     text-align: center;
 }
 
@@ -163,7 +170,7 @@ input:focus, input:active, button:focus, button:active {
     display: inline-block;
     border-bottom: 1px solid #666;
     position: relative;
-    margin: auto 10px;
+    margin: auto 5px;
 }
 
 .dropdown-menu {
@@ -172,4 +179,14 @@ input:focus, input:active, button:focus, button:active {
 
 .dropdown-menu > li > a {
     padding: 3px 10px;
+}
+
+.advanced-cron {
+    font-size: 40px !important;
+    text-align: center;
+    padding: 30px !important;
+}
+
+.double-digit {
+    width: 20px;
 }
