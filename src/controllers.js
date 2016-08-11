@@ -76,7 +76,7 @@
         ctrl.checked = true;
 
         ctrl.onClickSelect = function(event) {
-            event.target.select()
+            event.target.select();
         };
 
 

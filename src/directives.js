@@ -8,6 +8,7 @@
     app.directive('clearCells', clearCells);
     app.directive('switchPanel', switchPanel);
     app.directive('checkRadioBtn', checkRadioBtn);
+    // app.directive('toggleGraphic', toggleGraphic);
 
 
     function toggleSelected() {
@@ -260,16 +261,18 @@
         };
 
         function link(scope, el, attrs) {
-
             var panelId = el[0].getAttribute('switch-panel'),
                 element = angular.element('#' + panelId);
 
 
             var hideElements = function () {
                 var allCronContainers = element.parent().children('[data-state]');
-                for (var i = 0; i < allCronContainers.length; i++) {
-                    allCronContainers[i].setAttribute('data-state', 'hidden');
-                }
+                // for (var i = 0; i < allCronContainers.length; i++) {
+                //     allCronContainers[i].setAttribute('data-state', 'hidden');
+                // }
+                _.each(allCronContainers, function(container) {
+                    container.setAttribute('data-state', 'hidden');
+                });
             };
 
             var toggleState = function(elem, one, two){
@@ -293,11 +296,30 @@
 
         function link(scope, el, attrs) {
             el.on('click', function () {
-                console.log('', el.parent().children('input').prop('checked', true));
+                el.parent().children('input').prop('checked', true)
             })
         }
     }
 
+
+    // function toggleGraphic() {
+    //     return {
+    //         restrict: 'A',
+    //         link: link
+    //     };
+
+    //     function link(scope, el, attrs) {
+    //         // var panelId = el[0].getAttribute('switch-panel'),
+    //         //     element = angular.element('#' + panelId);
+
+    //         var graphicSection = angular.element('#graphicSection');
+
+
+    //         el.on('click', function(event) {
+    //             graphicSection[0].setAttribute('data-state', 'active');
+    //         });
+    //     }
+    // }
 
 
 
