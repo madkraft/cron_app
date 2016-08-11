@@ -1,16 +1,19 @@
-<!-- <div ng-controller="GraphicController as ctrl"> -->
 <div>
-    <div>
+    <div ng-if="ctrl.showGraphicPanel('date')">
         <button class="cell cell-day" data-state="normal" ng-repeat="day in ctrl.days" toggle-selected add-to-selected>
             {{day}}
         </button>
     </div>
 
-    <br>
-
-    <div>
+    <div ng-if="ctrl.showGraphicPanel('dow')">
         <button class="cell cell-dow" data-state="normal" ng-repeat="dow in ctrl.daysOfWeek" toggle-selected add-to-selected>
             {{dow.label}}
+        </button>
+    </div>
+
+    <div ng-if="ctrl.showGraphicPanel('month')">
+        <button class="cell cell-dow" data-state="normal" ng-repeat="month in ctrl.monthsOfYear" toggle-selected add-to-selected>
+            {{month.label}}
         </button>
     </div>
 

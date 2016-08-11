@@ -17,6 +17,15 @@
     <label
         class="radio-btn options"
         data-state="normal"
+        ng-click="ctrl.setState(ctrl.dow)"
+        toggle-active>
+            <input type="radio" name="weeks"/>
+            <span class="label-text">Every week on:</span>
+    </label>
+
+    <label
+        class="radio-btn options"
+        data-state="normal"
         ng-click="ctrl.setState(ctrl.weeks)"
         toggle-active>
             <input type="radio" name="weeks"/>
@@ -30,13 +39,6 @@
             <span>week(s)</span>
     </label>
 
-    <label
-        class="radio-btn options"
-        data-state="normal"
-        ng-click="ctrl.setState(ctrl.dow)"
-        toggle-active>
-            <input type="radio" name="weeks"/>
-            <span class="label-text">Every week on:</span>
-    </label>
+
 
 </div>

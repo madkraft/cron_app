@@ -17,20 +17,20 @@
 
         ctrl.days = generateNumbers(32, 1);
 
-        // ctrl.months = [
-        //     {id: 0, name: 'Jan', type: 'winter'},
-        //     {id: 1, name: 'Febr', type: 'winter'},
-        //     {id: 2, name: 'Mar', type: 'spring'},
-        //     {id: 3, name: 'Apr', type: 'spring'},
-        //     {id: 4, name: 'May', type: 'spring'},
-        //     {id: 5, name: 'Jun', type: 'summer'},
-        //     {id: 6, name: 'Jul', type: 'summer'},
-        //     {id: 7, name: 'Aug', type: 'summer'},
-        //     {id: 8, name: 'Sep', type: 'autumn'},
-        //     {id: 9, name: 'Oct', type: 'autumn'},
-        //     {id: 10, name: 'Nov', type: 'autumn'},
-        //     {id: 11, name: 'Dec', type: 'winter'}
-        // ];
+        ctrl.monthsOfYear = [
+            {value: 0, label: 'Jan', type: 'winter'},
+            {value: 1, label: 'Febr', type: 'winter'},
+            {value: 2, label: 'Mar', type: 'spring'},
+            {value: 3, label: 'Apr', type: 'spring'},
+            {value: 4, label: 'May', type: 'spring'},
+            {value: 5, label: 'Jun', type: 'summer'},
+            {value: 6, label: 'Jul', type: 'summer'},
+            {value: 7, label: 'Aug', type: 'summer'},
+            {value: 8, label: 'Sep', type: 'autumn'},
+            {value: 9, label: 'Oct', type: 'autumn'},
+            {value: 10, label: 'Nov', type: 'autumn'},
+            {value: 11, label: 'Dec', type: 'winter'}
+        ];
 
         // ctrl.dow = [
         //     {id: 0, name: 'Sun', type: 'weekend'},
@@ -79,6 +79,11 @@
             event.target.select();
         };
 
+        ctrl.showGraphicPanel = function(panel) {
+            if (ctrl.state[0].label === panel) {
+                return true;
+            }
+        }
 
         ctrl.hours = {
             start: '00',
@@ -115,7 +120,8 @@
         ctrl.state = [
             {
                 value: ctrl.date.value,
-                label: ctrl.date.label
+                label: ctrl.date.label,
+                showGraphicPanel: false
             }
         ];
 

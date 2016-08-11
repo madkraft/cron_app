@@ -302,7 +302,6 @@
     }
 
 
-    // graphicModule.$inject = []
     function graphicModule() {
         return {
             restrict: 'A',
@@ -316,19 +315,41 @@
 
             function handleChange() {
                 var cells = angular.element('.cell');
+                var parsedStateValue = _.split(scope.ctrl.state[0].value, ',');
+                var range = _.map(parsedStateValue, _.parseInt);
 
-                var range = scope.ctrl.state[0].value;
+                _clearCells(cells);
 
+                if (range.length > 1) {
+                    _selectCellsFromRange(cells, range);
+                } else {
+
+                    _selectRepeatableCells(cells, range);
+                }
+
+            }
+
+
+            function _clearCells(cells) {
                 _.each(cells, function (cell) {
                     cell.setAttribute('data-state', 'normal');
                 });
+            }
 
+            function _selectRepeatableCells(cells, range) {
                 for (var i = 0; i < cells.length; i++) {
                     if (i % range === 0) {
                         cells[i].setAttribute('data-state', 'active');
                     }
                 }
+            }
 
+            function _selectCellsFromRange(cells, range) {
+                for (var i = 0; i < cells.length; i++) {
+                    if (_.includes(range, i)) {
+                        cells[i].setAttribute('data-state', 'active');
+                    }
+                }
             }
 
 
