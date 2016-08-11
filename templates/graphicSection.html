@@ -1,0 +1,17 @@
+<!-- <div ng-controller="GraphicController as ctrl"> -->
+<div>
+    <div>
+        <button class="cell cell-day" data-state="normal" ng-repeat="day in ctrl.days" toggle-selected add-to-selected>
+            {{day}}
+        </button>
+    </div>
+
+    <br>
+
+    <div>
+        <button class="cell cell-dow" data-state="normal" ng-repeat="dow in ctrl.daysOfWeek" toggle-selected add-to-selected>
+            {{dow.label}}
+        </button>
+    </div>
+
+</div>
