@@ -15,10 +15,6 @@ p {
     text-align: left;
 }
 
-hr {
-    margin-bottom: 0;
-}
-
 
 input:focus, input:active, button:focus, button:active {
     outline: none !important;
@@ -92,12 +88,6 @@ input:focus, input:active, button:focus, button:active {
     text-align: center;
 }
 
-.cell-block {
-    /*margin: 20px auto;*/
-    width: 260px;
-}
-
-
 .cell {
     display: inline-block;
     /*width: 25%;*/
@@ -133,7 +123,7 @@ input:focus, input:active, button:focus, button:active {
 }
 
 .cell-dow {
-    width: 33%;
+    width: 100%;
 }
 /*
 .radio-select {

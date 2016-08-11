@@ -1,6 +1,6 @@
 (function () {
 
-    angular.module('app', ['graphicModule'])
+    angular.module('app', [])
 
 
 }());

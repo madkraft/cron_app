@@ -9,19 +9,19 @@
     </label>
     <label
         class="radio-btn"
-        data-state="normal"
+        data-state="active"
         ng-click="ctrl.setState(ctrl.date)"
         toggle-active
         switch-panel="daysSection">
-            <input type="radio" name="nav"/><span class="label-text">Daily</span>
+            <input type="radio" name="nav" ng-model="::ctrl.checked" ng-value="true"/><span class="label-text">Daily</span>
     </label>
     <label
         class="radio-btn"
-        data-state="active"
+        data-state="normal"
         ng-click="ctrl.setState(ctrl.weeks)"
         toggle-active
         switch-panel="dowSection">
-            <input type="radio" name="nav" ng-model="::ctrl.checked" ng-value="true"/><span class="label-text">Weekly</span>
+            <input type="radio" name="nav"/><span class="label-text">Weekly</span>
     </label>
     <label
         class="radio-btn"

@@ -8,7 +8,7 @@
     app.directive('clearCells', clearCells);
     app.directive('switchPanel', switchPanel);
     app.directive('checkRadioBtn', checkRadioBtn);
-    // app.directive('toggleGraphic', toggleGraphic);
+    app.directive('graphicModule', graphicModule);
 
 
     function toggleSelected() {
@@ -302,24 +302,40 @@
     }
 
 
-    // function toggleGraphic() {
-    //     return {
-    //         restrict: 'A',
-    //         link: link
-    //     };
+    // graphicModule.$inject = []
+    function graphicModule() {
+        return {
+            restrict: 'A',
+            link: link
+        };
 
-    //     function link(scope, el, attrs) {
-    //         // var panelId = el[0].getAttribute('switch-panel'),
-    //         //     element = angular.element('#' + panelId);
-
-    //         var graphicSection = angular.element('#graphicSection');
+        function link(scope, el, attrs) {
+            el.on('click', handleChange);
+            el.on('input', handleChange);
 
 
-    //         el.on('click', function(event) {
-    //             graphicSection[0].setAttribute('data-state', 'active');
-    //         });
-    //     }
-    // }
+            function handleChange() {
+                var cells = angular.element('.cell');
+
+                var range = scope.ctrl.state[0].value;
+
+                _.each(cells, function (cell) {
+                    cell.setAttribute('data-state', 'normal');
+                });
+
+                for (var i = 0; i < cells.length; i++) {
+                    if (i % range === 0) {
+                        cells[i].setAttribute('data-state', 'active');
+                    }
+                }
+
+            }
+
+
+        }
+    }
+
+
 
 
 

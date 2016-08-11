@@ -7,17 +7,16 @@
     function MainController(dispatcherService, cronService) {
         var ctrl = this;
 
-        // var generateNumbers = function (n, start) {
-        //     var res = [];
-        //     for (var i = start; i < n; i++) {
-        //         res.push(i);
-        //     }
-        //     return res;
-        // };
+        var generateNumbers = function (n, start) {
+            var res = [];
+            for (var i = start; i < n; i++) {
+                res.push(i);
+            }
+            return res;
+        };
 
-        // ctrl.minutes = generateNumbers(60, 0);
-        // ctrl.hours = generateNumbers(24,0);
-        // ctrl.days = generateNumbers(32, 1);
+        ctrl.days = generateNumbers(32, 1);
+
         // ctrl.months = [
         //     {id: 0, name: 'Jan', type: 'winter'},
         //     {id: 1, name: 'Febr', type: 'winter'},
@@ -32,6 +31,7 @@
         //     {id: 10, name: 'Nov', type: 'autumn'},
         //     {id: 11, name: 'Dec', type: 'winter'}
         // ];
+
         // ctrl.dow = [
         //     {id: 0, name: 'Sun', type: 'weekend'},
         //     {id: 1, name: 'Mon', type: 'weekday'},
@@ -114,8 +114,8 @@
 
         ctrl.state = [
             {
-                value: ctrl.weeks.value,
-                label: ctrl.weeks.label
+                value: ctrl.date.value,
+                label: ctrl.date.label
             }
         ];
 
