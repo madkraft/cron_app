@@ -27,36 +27,17 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-3 cron-nav">
-                                <div ng-include="'templates/navigation.html'"></div>
+
+                            <div class="col-md-4 cron-nav">
+                                <div class="col-md-12 cron-section">
+                                    <navigation></navigation>
+                                </div>
                             </div>
 
-                            <div class="col-md-5 cron-container" data-state="hidden" id="hoursSection">
-                                <div ng-include="'templates/hourly.html'"></div>
+                            <div class="col-md-8 cron-container">
+                                <div ng-include="'templates/' + ctrl.activePanel + '.html'"></div>
                             </div>
 
-
-                            <div class="col-md-5 cron-container" data-state="active" id="daysSection">
-                                 <div ng-include="'templates/daily.html'"></div>
-                            </div>
-
-                            <div class="col-md-5 cron-container" data-state="hidden" id="dowSection">
-                                <div ng-include="'templates/weekly.html'"></div>
-                            </div>
-
-                            <div class="col-md-5 cron-container" data-state="hidden" id="monthsSection">
-                                <div ng-include="'templates/monthly.html'"></div>
-                            </div>
-
-
-                            <div class="col-md-5 cron-container" data-state="hidden" id="advancedSection">
-                                <div ng-include="'templates/advanced.html'"></div>
-                            </div>
-
-
-                            <div class="col-md-4" id="graphicSection">
-                                <div ng-include="'templates/graphicSection.html'"></div>
-                            </div>
 
                         </div>
 
@@ -65,9 +46,9 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="ctrl.saveCron()">Save cron</button>
                     </div>
-                    <pre style="font-size: 14px">
+<!--                     <pre style="font-size: 14px">
                         {{ctrl.state | json}}
-                    </pre>
+                    </pre> -->
                 </div>
             </div>
         </div>
@@ -82,6 +63,9 @@
     <script type="text/javascript" src="src/controllers.js"></script>
     <script type="text/javascript" src="src/directives.js"></script>
     <script type="text/javascript" src="src/services.js"></script>
+    <script type="text/javascript" src="src/models/category-collection.js"></script>
+    <script type="text/javascript" src="src/models/panel-collection.js"></script>
+    <script type="text/javascript" src="src/models/panel.js"></script>
     <!-- <script type="text/javascript" src="src/graphic_module/graphic_module.js"></script> -->
     <script type="text/javascript" src="src/graphic_module/graphic_service.js"></script>
     <script type="text/javascript" src="src/graphic_module/graphic_controller.js"></script>

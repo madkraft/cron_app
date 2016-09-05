@@ -1,5 +1,11 @@
 <div>
-    <div ng-if="ctrl.showGraphicPanel('date')">
+    <div>
+        <button class="cell cell-day" data-state="normal" ng-repeat="day in ctrl.days" toggle-selected add-to-selected>
+            {{day}}
+        </button>
+    </div>
+
+    <!-- <div ng-if="ctrl.showGraphicPanel('date')">
         <button class="cell cell-day" data-state="normal" ng-repeat="day in ctrl.days" toggle-selected add-to-selected>
             {{day}}
         </button>
@@ -15,6 +21,6 @@
         <button class="cell cell-dow" data-state="normal" ng-repeat="month in ctrl.monthsOfYear" toggle-selected add-to-selected>
             {{month.label}}
         </button>
-    </div>
+    </div> -->
 
 </div>

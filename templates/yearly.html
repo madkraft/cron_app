@@ -1,0 +1,74 @@
+<div class="col-md-12 cron-section">
+
+    <label
+        class="radio-btn options"
+        data-state="normal"
+        ng-click="ctrl.setState(ctrl.date, ctrl.months)"
+        toggle-active>
+            <input type="radio" name="month"/>
+            <span class="label-text">On</span>
+            <div class="radio-select-dropdown" check-radio-btn>
+                <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ ctrl.selectedMonth.label }}
+                    <span class="caret"></span>
+                </div>
+                <ul class="dropdown-menu">
+                    <li ng-repeat="month in ctrl.monthsOfYear">
+                        <a href="#" ng-click="ctrl.selectMonth(month)">{{ ::month.label }}</a>
+                    </li>
+                </ul>
+            </div>
+            <input
+                type="text"
+                maxlength="2"
+                class="recurrence-text double-digit"
+                check-radio-btn
+                ng-model="ctrl.months.value"
+                ng-click="ctrl.onClickSelect($event)">
+    </label>
+
+
+    <label
+        class="radio-btn options"
+        data-state="normal"
+        ng-click="ctrl.setState(ctrl.date, ctrl.months, ctrl.dow)"
+        toggle-active>
+            <input type="radio" name="month"/>
+            <span class="label-text">The</span>
+            <div class="radio-select-dropdown" check-radio-btn>
+                <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ ctrl.selectedOrdinal.label }}
+                    <span class="caret"></span>
+                </div>
+                <ul class="dropdown-menu">
+                    <li ng-repeat="ordinal in ctrl.ordinalNumbers">
+                        <a href="#" ng-click="ctrl.selectOrdItem(ordinal)">{{ ::ordinal.label }}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="radio-select-dropdown" check-radio-btn>
+                <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ ctrl.selectedDOW.label }}
+                    <span class="caret"></span>
+                </div>
+                <ul class="dropdown-menu">
+                    <li ng-repeat="day in ctrl.daysOfWeek">
+                        <a href="#" ng-click="ctrl.selectDOW(day)">{{ ::day.label }}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <span>of </span>
+            <div class="radio-select-dropdown" check-radio-btn>
+                <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ ctrl.selectedMonth.label }}
+                    <span class="caret"></span>
+                </div>
+                <ul class="dropdown-menu">
+                    <li ng-repeat="month in ctrl.monthsOfYear">
+                        <a href="#" ng-click="ctrl.selectMonth(month)">{{ ::month.label }}</a>
+                    </li>
+                </ul>
+            </div>
+    </label>
+</div>

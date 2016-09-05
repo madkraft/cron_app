@@ -1,6 +1,12 @@
 <div class="col-md-12 cron-section">
-    <label
-        class="radio-btn"
+
+    <label class="radio-btn radio-btn-nav" ng-repeat="category in ctrl.categories">
+        <input type="radio" name="nav" ng-checked="category.selected" />
+        <span class="label-text">{{category.title}}</span>
+    </label>
+
+    <!-- <label
+        class="radio-btn radio-btn-nav"
         data-state="normal"
         ng-click="ctrl.setState(ctrl.hours)"
         toggle-active
@@ -8,7 +14,7 @@
             <input type="radio" name="nav"/><span class="label-text">Hourly</span>
     </label>
     <label
-        class="radio-btn"
+        class="radio-btn radio-btn-nav"
         data-state="active"
         ng-click="ctrl.setState(ctrl.date)"
         toggle-active
@@ -16,7 +22,7 @@
             <input type="radio" name="nav" ng-model="::ctrl.checked" ng-value="true"/><span class="label-text">Daily</span>
     </label>
     <label
-        class="radio-btn"
+        class="radio-btn radio-btn-nav"
         data-state="normal"
         ng-click="ctrl.setState(ctrl.weeks)"
         toggle-active
@@ -24,7 +30,7 @@
             <input type="radio" name="nav"/><span class="label-text">Weekly</span>
     </label>
     <label
-        class="radio-btn"
+        class="radio-btn radio-btn-nav"
         data-state="normal"
         ng-click="ctrl.setState(ctrl.date, ctrl.months)"
         toggle-active
@@ -32,11 +38,19 @@
             <input type="radio" name="nav"/><span class="label-text">Monthly</span>
     </label>
     <label
-        class="radio-btn"
+        class="radio-btn radio-btn-nav"
+        data-state="normal"
+        ng-click="ctrl.setState(ctrl.date, ctrl.months)"
+        toggle-active
+        switch-panel="yearSection">
+            <input type="radio" name="nav"/><span class="label-text">Yearly</span>
+    </label>
+    <label
+        class="radio-btn radio-btn-nav"
         data-state="normal"
         ng-click="ctrl.setState(ctrl.advanced)"
         toggle-active
         switch-panel="advancedSection">
             <input type="radio" name="nav"/><span class="label-text">Advanced</span>
-    </label>
+    </label> -->
 </div>

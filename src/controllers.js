@@ -3,9 +3,32 @@
     app.controller('MainController', MainController);
 
 
-    MainController.$inject = ['dispatcherService', 'cronService'];
-    function MainController(dispatcherService, cronService) {
+    MainController.$inject = ['$scope', 'dispatcherService', 'cronService', 'categoryCollection', 'panelCollection'];
+    function MainController($scope, dispatcherService, cronService, categoryCollection, panelCollection) {
         var ctrl = this;
+
+
+        window.categories = categoryCollection;
+        window.panels = panelCollection;
+
+        ctrl.categories = categoryCollection.getCategories();
+        ctrl.onCategoryClick = function (category) {
+            categoryCollection.selectCategory(category);
+        };
+
+        ctrl.activePanel = 'hourly';
+
+        $scope.$on('categoriesCollection::selectedCategory', function(event, data) {
+            panelCollection.selectPanel(data.category);
+        });
+
+        $scope.$on('panelsCollection::changedActivePanel', function(event, data) {
+            ctrl.activePanel = data.panel.name;
+        });
+
+
+
+
 
         var generateNumbers = function (n, start) {
             var res = [];
@@ -15,21 +38,22 @@
             return res;
         };
 
+
         ctrl.days = generateNumbers(32, 1);
 
         ctrl.monthsOfYear = [
-            {value: 0, label: 'Jan', type: 'winter'},
-            {value: 1, label: 'Febr', type: 'winter'},
-            {value: 2, label: 'Mar', type: 'spring'},
-            {value: 3, label: 'Apr', type: 'spring'},
+            {value: 0, label: 'January', type: 'winter'},
+            {value: 1, label: 'February', type: 'winter'},
+            {value: 2, label: 'March', type: 'spring'},
+            {value: 3, label: 'April', type: 'spring'},
             {value: 4, label: 'May', type: 'spring'},
-            {value: 5, label: 'Jun', type: 'summer'},
-            {value: 6, label: 'Jul', type: 'summer'},
-            {value: 7, label: 'Aug', type: 'summer'},
-            {value: 8, label: 'Sep', type: 'autumn'},
-            {value: 9, label: 'Oct', type: 'autumn'},
-            {value: 10, label: 'Nov', type: 'autumn'},
-            {value: 11, label: 'Dec', type: 'winter'}
+            {value: 5, label: 'June', type: 'summer'},
+            {value: 6, label: 'July', type: 'summer'},
+            {value: 7, label: 'August', type: 'summer'},
+            {value: 8, label: 'September', type: 'autumn'},
+            {value: 9, label: 'October', type: 'autumn'},
+            {value: 10, label: 'November', type: 'autumn'},
+            {value: 11, label: 'December', type: 'winter'}
         ];
 
         // ctrl.dow = [
@@ -59,8 +83,10 @@
             {value: 6, label: 'Saturday', type: 'weekend'}
         ];
 
+
         ctrl.selectedOrdinal = ctrl.ordinalNumbers[0];
         ctrl.selectedDOW = ctrl.daysOfWeek[1];
+        ctrl.selectedMonth = ctrl.monthsOfYear[0];
 
         ctrl.selectOrdItem = function(item) {
             ctrl.selectedOrdinal = item;
@@ -72,6 +98,11 @@
             ctrl.dow.value = item.value;
         };
 
+        ctrl.selectMonth = function (item) {
+            ctrl.selectedMonth = item;
+            ctrl.dow.value = item.value;
+        };
+
 
         ctrl.checked = true;
 
@@ -79,11 +110,11 @@
             event.target.select();
         };
 
-        ctrl.showGraphicPanel = function(panel) {
-            if (ctrl.state[0].label === panel) {
-                return true;
-            }
-        }
+        ctrl.showGraphicPanel = false;
+        ctrl.toggleGraphicPanel = function(evt) {
+            console.log('', evt);
+            ctrl.showGraphicPanel = !ctrl.showGraphicPanel;
+        };
 
         ctrl.hours = {
             start: '00',
@@ -94,7 +125,7 @@
 
 
         ctrl.date = {
-            value: '01',
+            value: '2',
             label: 'date'
         };
 
@@ -129,6 +160,7 @@
 
 
         ctrl.setState = function () {
+            ctrl.showGraphicPanel = false;
             var args = Array.prototype.slice.call(arguments);
 
             ctrl.state = [];

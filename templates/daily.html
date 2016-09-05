@@ -25,12 +25,11 @@
     </label> -->
 
     <label
-        class="radio-btn options"
+        class="radio-btn options clearfix"
         data-state="normal"
-        ng-click="ctrl.setState(ctrl.date)"
         toggle-active
         graphic-module>
-            <input type="radio" name="day"/>
+            <input type="radio" name="day" ng-click="ctrl.setState(ctrl.date)"/>
             <span class="label-text">Every</span>
             <input
                 type="text" maxlength="2"
@@ -39,25 +38,35 @@
                 ng-model="ctrl.date.value"
                 ng-click="ctrl.onClickSelect($event)">
             <span>day(s)</span>
+
+            <span class="info pull-right"><a href="#" ng-click="ctrl.toggleGraphicPanel($event)">view</a></span>
+
+            <div class="pull-right view-days" ng-if="ctrl.showGraphicPanel">
+                <button class="cell cell-day" data-state="normal" ng-repeat="day in ctrl.days" toggle-selected add-to-selected>
+                    {{day}}
+                </button>
+            </div>
     </label>
+
+
+
+
 
     <label
         class="radio-btn options"
         data-state="normal"
-        ng-click="ctrl.setState(ctrl.dow)"
         toggle-active
         graphic-module>
-            <input type="radio" name="day" ng-model="ctrl.dow.value" ng-value="'1,2,3,4,5'"/>
+            <input type="radio" name="day" ng-click="ctrl.setState(ctrl.dow)" ng-model="ctrl.dow.value" ng-value="'1,2,3,4,5'"/>
             <span class="label-text">Every weekday</span>
     </label>
 
     <label
         class="radio-btn options"
         data-state="normal"
-        ng-click="ctrl.setState(ctrl.dow)"
         toggle-active
         graphic-module>
-            <input type="radio" name="day" ng-model="ctrl.dow.value" ng-value="'0,6'"/>
+            <input type="radio" name="day" ng-click="ctrl.setState(ctrl.dow)" ng-model="ctrl.dow.value" ng-value="'0,6'"/>
             <span class="label-text">Every weekend</span>
     </label>
 

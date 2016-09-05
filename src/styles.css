@@ -1,8 +1,3 @@
-/*body {
-    font-size: 16px;
-}*/
-
-
 .hidden {
     display: none;
 }
@@ -38,12 +33,10 @@ input:focus, input:active, button:focus, button:active {
 
 .radio-btn[data-state=active] {
     background-color: #ddd;
-    /*color: #fff !important;*/
     position: relative;
-    /*border-bottom: 1px solid #5bc0de;*/
 }
 
-.radio-btn[data-state=active]::after {
+.radio-btn-nav[data-state=active]::after {
     content: " ";
     border-top: 15px solid transparent;
     border-bottom: 15px solid transparent;
@@ -55,10 +48,6 @@ input:focus, input:active, button:focus, button:active {
 
 .radio-btn .label-text {
     margin-left: 10px;
-}
-
-.modal-dialog {
-    width: 1000px;
 }
 
 .check-btn {
@@ -83,7 +72,7 @@ input:focus, input:active, button:focus, button:active {
 .recurrence-text {
     background: transparent;
     border: none;
-    border-bottom: 1px solid #666;
+    border-bottom: 1px solid #aaa;
     width: 40px;
     text-align: center;
 }
@@ -92,7 +81,7 @@ input:focus, input:active, button:focus, button:active {
     display: inline-block;
     /*width: 25%;*/
     padding: 5px;
-    border: 1px solid #eee;
+    border: none;
     background-color: #fff;
     text-align: center;
 }
@@ -110,55 +99,29 @@ input:focus, input:active, button:focus, button:active {
     color: #fff;
 }
 
-.cell-hour {
+/*.cell-hour {
     width: 50%;
-}
+}*/
 
 .cell-day {
-    width: 14%;
+    /*width: 14%;*/
+    width: 31px;
+    height: 25px;
+    line-height: 10px;
+    margin: 2px;
 }
 
-.cell-month {
+/*.cell-month {
     width: 33%;
 }
 
 .cell-dow {
     width: 100%;
-}
-/*
-.radio-select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 5px;
-}
-
-.radio-select[data-state=active] {
-    background-color: #5bc0de;
-    color: #fff;
-}
-
-.radio-select[data-state=active] input {
-    border-bottom: 1px solid #fff;
-    color: #fff;
-}
-
-.radio-select[data-state=normal]:hover {
-    background-color: #666;
-    color: #fff;
-}
-
-.radio-select[data-state=normal] input {
-    color: #111;
-}
-
-.radio-select[data-state=normal]:hover input {
-    border-bottom: 1px solid #fff;
-    color: #fff;
 }*/
 
 .radio-select-dropdown {
     display: inline-block;
-    border-bottom: 1px solid #666;
+    border-bottom: 1px solid #aaa;
     position: relative;
     margin: auto 5px;
 }
@@ -179,4 +142,14 @@ input:focus, input:active, button:focus, button:active {
 
 .double-digit {
     width: 20px;
+}
+
+.info {
+    font-size: 12px;
+}
+
+.view-days {
+    font-size: 12px;
+    width: 80%;
+    margin-top: 15px;
 }

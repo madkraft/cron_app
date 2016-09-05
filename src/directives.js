@@ -10,6 +10,16 @@
     app.directive('checkRadioBtn', checkRadioBtn);
     app.directive('graphicModule', graphicModule);
 
+    app.directive('navigation', navigation);
+
+    function navigation() {
+        return {
+            template:   '<label class="radio-btn radio-btn-nav" ng-repeat="category in ctrl.categories" >' +
+                            '<input type="radio" name="nav" ng-checked="category.selected" ng-click="ctrl.onCategoryClick(category)" />' +
+                            '<span class="label-text">{{category.title}}</span>' +
+                        '</label>'
+        };
+    }
 
     function toggleSelected() {
         return {
@@ -39,6 +49,7 @@
 
         }
     }
+
 
 
     function setState() {
